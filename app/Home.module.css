@@ -1,0 +1,7 @@
+/* Home.module.css */
+.addJobBtn {
+  padding: 8px 16px;
+  background-color: #0070f3;
+  color: white;
+  cursor: pointer;
+}
