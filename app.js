@@ -8,15 +8,15 @@ const displayJobs = document.querySelector('[data-js="display-jobs"]');
 
 jobForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  const name = companyInput.value.trim();
+  const company = companyInput.value.trim();
 
-  if (!name) {
+  if (!company) {
     alert("Please enter a Company name!");
     return;
   }
 
-  console.log(`Adding job for: ${name}`);
-  jobs.push(createJob(name));
+  console.log(`Adding job for: ${company}`);
+  jobs.push(createJob(company));
   console.log(jobs);
 
   companyInput.value = "";
@@ -26,16 +26,16 @@ jobForm.addEventListener("submit", (e) => {
 });
 
 
-const createJob = (name) => {
-  return {name};
+const createJob = (company) => {
+  return {company, status: "Applied"};
 };
 
 const renderJobs = (jobs) => {
-  displayJobs.children = "";
+  displayJobs.replaceChildren();
   
   jobs.forEach(job => {
     const li = document.createElement("li");
-    li.textContent = job.name;
+    li.textContent = `Company: ${job.company}, Status: ${job.status}`;
     displayJobs.append(li);
   });
 

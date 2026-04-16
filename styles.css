@@ -40,3 +40,7 @@ button:hover {
 
 /* .addJobBtn {
 } */
+
+ul > li {
+  padding: 0 16px;
+}
