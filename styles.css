@@ -43,4 +43,17 @@ button:hover {
 
 ul > li {
   padding: 0 16px;
+  margin-bottom: 12px;
+}
+
+.action-btn {
+  padding: 4px 8px;
+  background-color: #555555;
+  color: #ffffff;
+  margin-left: 8px;
+}
+
+.action-btn:hover {
+  cursor: pointer;
+  background-color: #888888;
 }
