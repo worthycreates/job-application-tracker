@@ -3,6 +3,7 @@ const jobs = [];
 const jobStates = ["Considering", "Applied", "Interview", "Offer"];
 
 const companyInput = document.querySelector('[data-js="company-name"]');
+const roleInput = document.querySelector('[data-js="job-role"]');
 const jobForm = document.querySelector('[data-js="job-form"]');
 const displayJobs = document.querySelector('[data-js="display-jobs"]');
 const actionBtns = document.querySelectorAll('[data-js="action-btns"]');
@@ -11,27 +12,42 @@ const actionBtns = document.querySelectorAll('[data-js="action-btns"]');
 jobForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const company = companyInput.value.trim();
-
-  if (!company) {
-    alert("Please enter a Company name!");
+  const role = roleInput.value.trim();
+  
+  if (!requireInput(company, "company") || !requireInput(role, "role"))
     return;
-  }
 
-  console.log(`Adding job for: ${company}`);
-  jobs.push(createJob(company));
+  console.log(`Adding job for: ${company}: ${role}`);
+  jobs.push(createJob(company, role));
   console.log(jobs);
 
-  companyInput.value = "";
+  clearInput([companyInput, roleInput]);
+ 
   companyInput.focus();
 
   renderJobs();
 });
 
+const requireInput = (formInput, inputType) => {
+  if (!formInput) {
+    alert(`Please enter a ${inputType}!`);
+    return false;
+  }
+  return true;
+};
 
-const createJob = (company) => {
+const clearInput = (inputs) => {
+  inputs.forEach(input => {
+    input.value = "";
+  });
+};
+
+
+const createJob = (company, role) => {
   return {
     id: crypto.randomUUID(),
     company, 
+    role,
     status: jobStates[0],
   };
 };
@@ -49,7 +65,7 @@ const createJobElement = (job) => {
   });
 
   const li = document.createElement("li");
-  li.textContent = `Company: ${job.company}, Status: ${job.status}`;
+  li.textContent = `Company: ${job.company}, Role: ${job.role}, Status: ${job.status}`;
   li.append(btn)
   return li;
 };
