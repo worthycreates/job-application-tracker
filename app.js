@@ -65,6 +65,13 @@ class JobTracker {
     };
   };
 
+  deleteJob(jobId) {
+    console.log("Deleting job!");
+
+    this.jobs = this.jobs.filter(job => job.id !== jobId);
+    this.renderJobs();
+  };
+
   createJobElement(job) {
     const btn = this.buildElement("button", {
         text: job.status !== "Offer" ? `Mark as ${this.jobStates[this.jobStates.indexOf(job.status) + 1]}` : "",
@@ -82,13 +89,28 @@ class JobTracker {
           }
         }
       }
-    ),
+    );
 
-    li = this.buildElement("li", {
+    const deleteBtn = this.buildElement("button", {
+      text: "x",
+      classes: ["del-btn"],
+      attr: {
+        "data-js": "del-btns",
+        "data-id": job.id
+      },
+      event: {
+        type: "click",
+        handler: (e) => {
+          this.deleteJob(job.id);
+        }
+      }
+    });
+
+    const li = this.buildElement("li", {
         text: `Company: ${job.company}, Role: ${job.role}, Status: ${job.status}`,
         classes: ["job-item", "active"],
         attr: {"data-id": job.id},
-        child: btn
+        child: [btn, deleteBtn]
       }
     );
 
@@ -103,7 +125,7 @@ class JobTracker {
     if (classes) el.classList.add(...classes);
     if (attr) Object.entries(attr).forEach(([k, v]) => el.setAttribute(k, v));
     if (event) el.addEventListener(event.type, event.handler);
-    if (child) el.append(child);
+    if (child) child.forEach(c => el.append(c));
 
     return el;
   };

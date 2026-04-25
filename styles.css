@@ -57,3 +57,15 @@ ul > li {
   cursor: pointer;
   background-color: #888888;
 }
+
+.del-btn {
+  padding: 4px 8px;
+  background-color: #d75151;
+  color: #ffffff;
+  margin-left: 8px;
+}
+
+.del-btn:hover {
+  cursor: pointer;
+  background-color: #e96363;
+}
