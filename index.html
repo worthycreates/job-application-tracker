@@ -13,6 +13,16 @@
       <input data-js="job-role" type="text" placeholder="Job Role" />
       <button data-js="add-btn" class="addJobBtn">Add Job</button>
     </form>
+    <div class="filters">
+      <label for="filter">Filter List:</label>
+      <select data-js="filter-dropdown" name="filter" id="filter">
+        <option value="all">All</option>
+        <option value="considering">Considering</option>
+        <option value="applied">Applied</option>
+        <option value="interview">Interview</option>
+        <option value="offer">Offer</option>
+      </select>
+    </div>
     <ul data-js="display-jobs"></ul>
   </body>
 </html>

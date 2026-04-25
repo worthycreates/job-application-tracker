@@ -10,6 +10,7 @@ class JobTracker {
     this.jobForm = document.querySelector('[data-js="job-form"]');
     this.displayJobs = document.querySelector('[data-js="display-jobs"]');
     this.actionBtns = document.querySelectorAll('[data-js="action-btns"]');
+    this.filterJobs = document.querySelector('[data-js="filter-dropdown"');
 
     this.init();
   };
@@ -29,7 +30,11 @@ class JobTracker {
         });
 
         this.clearForm();
-      });
+    });
+
+    this.filterJobs.addEventListener("change", (e) => {
+      this.renderJobs();
+    })
   };
 
   clearForm() {
@@ -105,10 +110,38 @@ class JobTracker {
 
   renderJobs() {
     this.displayJobs.replaceChildren();
-    
-    this.jobs.forEach(job => {
-      this.displayJobs.append(this.createJobElement(job));
-    });
+
+    switch (this.filterJobs.value) {
+      case "considering":
+        this.jobs.filter(job => job.status === "Considering").forEach(job => {
+          this.displayJobs.append(this.createJobElement(job));
+        });
+        break;
+        
+      case "applied":
+        this.jobs.filter(job => job.status === "Applied").forEach(job => {
+          this.displayJobs.append(this.createJobElement(job));
+        });
+        break;
+
+      case "interview":
+        this.jobs.filter(job => job.status === "Interview").forEach(job => {
+          this.displayJobs.append(this.createJobElement(job));
+        });
+        break;
+
+      case "offer":
+        this.jobs.filter(job => job.status === "Offer").forEach(job => {
+          this.displayJobs.append(this.createJobElement(job));
+        });
+        break;
+
+      default:
+        this.jobs.forEach(job => {
+          this.displayJobs.append(this.createJobElement(job));
+        });
+        break;
+    }
 
     console.log(this.displayJobs);
   };
