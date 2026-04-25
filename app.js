@@ -72,8 +72,12 @@ class JobTracker {
   };
 
   createJobElement(job) {
+    const currentIndex = this.jobStates.indexOf(job.status);
+    const nextStatus = currentIndex < this.jobStates.length - 1 
+    ? this.jobStates[currentIndex + 1] : null;
+    
     const btn = this.buildElement("button", {
-        text: job.status !== "Offer" ? `Mark as ${this.jobStates[this.jobStates.indexOf(job.status) + 1]}` : "",
+        text: nextStatus ? `Mark as ${nextStatus}` : "",
         classes: ["action-btn"],
         attr: {
           "data-js": "action-btns",
