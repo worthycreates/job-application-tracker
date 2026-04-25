@@ -39,7 +39,8 @@ Pure JavaScript + HTML.
 
 ## Key Takeaways
 
-- Learned how to manage state manually
-- Understood relationship between data and UI
-- Built reusable DOM abstraction (buildElement)
-- Saw limitations of manual DOM updates (motivates frameworks like React)
+- Learned how to manage state manually.
+- Understood relationship between data and UI.
+- Built reusable DOM abstraction (buildElement).
+- Saw limitations of manual DOM updates (motivates frameworks like React).
+- Implemented class-based architecture to manage application state and behaviour.
