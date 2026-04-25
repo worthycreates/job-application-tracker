@@ -90,7 +90,8 @@ class JobTracker {
             console.log("You clicked the button for:", job.company);
             this.updateStatus(job);
           }
-        }
+        },
+        disabled: !nextStatus,
       }
     );
 
@@ -121,7 +122,7 @@ class JobTracker {
   };
 
   buildElement(tag, options = {}) {
-    const { text, classes, attr, event, child } = options;
+    const { text, classes, attr, event, child, disabled } = options;
     const el = document.createElement(tag);
 
     if (text) el.textContent = text;
@@ -129,6 +130,7 @@ class JobTracker {
     if (attr) Object.entries(attr).forEach(([k, v]) => el.setAttribute(k, v));
     if (event) el.addEventListener(event.type, event.handler);
     if (child) child.forEach(c => el.append(c));
+    if (disabled) el.disabled = true;
 
     return el;
   };
