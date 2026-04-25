@@ -3,6 +3,19 @@
 ## Iteration 1: Mini Job Tracker
 *Lite Version*
 
+### Data Model
+#### Job Attributes
+- ID
+- Company
+- Role
+- Status
+
+#### Job Functions
+- Add jobs.
+- Delete jobs.
+- Change the job status.
+- Filter jobs based on status.
+
 ### Features
 - Add a job.
 - Display jobs.
