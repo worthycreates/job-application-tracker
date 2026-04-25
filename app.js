@@ -9,7 +9,6 @@ class JobTracker {
     this.roleInput = document.querySelector('[data-js="job-role"]');
     this.jobForm = document.querySelector('[data-js="job-form"]');
     this.displayJobs = document.querySelector('[data-js="display-jobs"]');
-    this.actionBtns = document.querySelectorAll('[data-js="action-btns"]');
     this.filterJobs = document.querySelector('[data-js="filter-dropdown"]');
 
     this.init();
