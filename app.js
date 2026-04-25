@@ -145,8 +145,10 @@ class JobTracker {
   };
 
   updateStatus(job) {
-    if (job.status !== "Offer") {
-      job.status = this.jobStates[this.jobStates.indexOf(job.status) + 1];
+    const currentIndex = this.jobStates.indexOf(job.status);
+
+    if (currentIndex < this.jobStates.length - 1) {
+      job.status = this.jobStates[currentIndex + 1];
     }
     
     console.log(job);
