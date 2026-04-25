@@ -1,15 +1,20 @@
+class JobTracker {
+  constructor() {
+    // Initial State.
+    this.jobs = [];
+    this.jobStates = ["Considering", "Applied", "Interview", "Offer"];
 
-const app = {
-  jobs: [],
-  jobStates: ["Considering", "Applied", "Interview", "Offer"],
-
-  init() {
+    // Selectors.
     this.companyInput = document.querySelector('[data-js="company-name"]');
     this.roleInput = document.querySelector('[data-js="job-role"]');
     this.jobForm = document.querySelector('[data-js="job-form"]');
     this.displayJobs = document.querySelector('[data-js="display-jobs"]');
     this.actionBtns = document.querySelectorAll('[data-js="action-btns"]');
 
+    this.init();
+  };
+
+  init() {
     this.jobForm.addEventListener("submit", (e) => {
         e.preventDefault();
         const company = this.companyInput.value.trim();
@@ -25,12 +30,12 @@ const app = {
 
         this.clearForm();
       });
-  },
+  };
 
   clearForm() {
     this.clearInput([this.companyInput, this.roleInput]);
     this.companyInput.focus();
-  },
+  };
 
   requireInput(formInput, inputType){
     if (!formInput) {
@@ -38,13 +43,13 @@ const app = {
       return false;
     }
     return true;
-  },
+  };
 
   clearInput(inputs) {
     inputs.forEach(input => {
       input.value = "";
     });
-  },
+  };
 
   createJob(company, role) {
     return {
@@ -53,7 +58,7 @@ const app = {
       role,
       status: this.jobStates[0],
     };
-  },
+  };
 
   createJobElement(job) {
     const btn = this.buildElement("button", {
@@ -83,7 +88,7 @@ const app = {
     );
 
     return li;
-  },
+  };
 
   buildElement(tag, options = {}) {
     const { text, classes, attr, event, child } = options;
@@ -96,7 +101,7 @@ const app = {
     if (child) el.append(child);
 
     return el;
-  },
+  };
 
   renderJobs() {
     this.displayJobs.replaceChildren();
@@ -106,7 +111,7 @@ const app = {
     });
 
     console.log(this.displayJobs);
-  },
+  };
 
   updateStatus(job) {
     if (job.status !== "Offer") {
@@ -115,13 +120,13 @@ const app = {
     
     console.log(job);
     this.renderJobs();
-  },
+  };
 
   updateState(jobDetails) {
     const { company, role } = jobDetails;
     this.jobs.push(this.createJob(company, role));
     this.renderJobs();
-  },
+  };
 };
 
-app.init();
+const app = new JobTracker();
