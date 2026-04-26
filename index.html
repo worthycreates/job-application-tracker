@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Application Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <form data-js="job-form" class="addJobSection">
+      <input data-js="company-name" type="text" placeholder="Company Name" />
+      <input data-js="job-role" type="text" placeholder="Job Role" />
+      <button data-js="add-btn" class="addJobBtn">Add Job</button>
+    </form>
+    <div class="filters">
+      <label for="filter">Filter List:</label>
+      <select data-js="filter-dropdown" name="filter" id="filter">
+        <option value="all">All</option>
+        <option value="considering">Considering</option>
+        <option value="applied">Applied</option>
+        <option value="interview">Interview</option>
+        <option value="offer">Offer</option>
+      </select>
+    </div>
+    <ul data-js="display-jobs"></ul>
+  </body>
+</html>
