@@ -1,7 +1,7 @@
 # Job Application Tracker App
 
 ## Iteration 1: Mini Job Tracker
-*Lite Version*
+*React Version*
 
 ### Data Model
 #### Job Attributes
@@ -44,3 +44,10 @@ Pure JavaScript + HTML.
 - Built reusable DOM abstraction (buildElement).
 - Saw limitations of manual DOM updates (motivates frameworks like React).
 - Implemented class-based architecture to manage application state and behaviour.
+
+## React Version
+
+- Used useState for state management
+- Replaced manual DOM manipulation with declarative rendering
+- Implemented component-based architecture
+- Managed state updates immutably
